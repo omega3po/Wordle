@@ -7,5 +7,5 @@ public interface ReadonlyWordleModel {
     String getTargetWord();
     List<String> getGuessHistory();
     int getTotalNumGuess();
-    List<Letter> getCheckResult();
+    List<Letter> getCheckResult(int index);
 }
