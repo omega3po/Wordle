@@ -54,4 +54,9 @@ public class WordleViewFrame extends JFrame implements WordleView {
   public void showMessage(String message) {
     JOptionPane.showMessageDialog(this, message);
   }
+
+  @Override
+  public void stopInput() {
+    this.panel.disableInput();
+  }
 }

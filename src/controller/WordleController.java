@@ -37,5 +37,13 @@ public class WordleController implements FeatureListener {
     } catch (IllegalArgumentException e) {
       view.showMessage(e.getMessage());
     }
+    if (model.isGameOver()) {
+      view.stopInput();
+      if (model.didWIn()) {
+        view.showMessage("YOU WON! The word was: " + model.getTargetWord());
+      } else {
+        view.showMessage("YOU LOSE... The word was: " + model.getTargetWord());
+      }
+    }
   }
 }

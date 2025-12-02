@@ -29,4 +29,9 @@ public interface WordleView {
    * @param message message content
    */
   void showMessage(String message);
+
+  /**
+   * Stop getting input from the player.
+   */
+  void stopInput();
 }

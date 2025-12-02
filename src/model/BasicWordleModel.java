@@ -36,6 +36,11 @@ public class BasicWordleModel implements WordleModel {
 
 
   @Override
+  public boolean didWIn() {
+    return guessedRight;
+  }
+
+  @Override
   public boolean isGameOver() {
     return guessLeft <= 0 || guessedRight;
   }
