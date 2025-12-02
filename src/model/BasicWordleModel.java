@@ -29,7 +29,7 @@ public class BasicWordleModel implements WordleModel {
     this.guessHistory = new ArrayList<>();
     this.guessRecord = new Letter[totalNumGuess][WORD_LENGTH];
     this.guessLeft = totalNumGuess;
-    this.target = target;
+    this.target = target.toUpperCase();
     this.totalNumGuess = totalNumGuess;
     this.guessedRight = false;
   }
