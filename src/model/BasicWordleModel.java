@@ -5,11 +5,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Basic wordle model.
  */
 public class BasicWordleModel implements WordleModel {
+  private final Set<String> allowedWords;
   private final List<String> guessHistory;
   private final Letter[][] guessRecord;
   private int guessLeft;
@@ -25,13 +27,14 @@ public class BasicWordleModel implements WordleModel {
    * @param target        the target word
    * @param totalNumGuess number of guesses allowed to the player
    */
-  public BasicWordleModel(String target, int totalNumGuess) {
+  public BasicWordleModel(String target, int totalNumGuess, Set<String> allowedWords) {
     this.guessHistory = new ArrayList<>();
     this.guessRecord = new Letter[totalNumGuess][WORD_LENGTH];
     this.guessLeft = totalNumGuess;
     this.target = target.toUpperCase();
     this.totalNumGuess = totalNumGuess;
     this.guessedRight = false;
+    this.allowedWords = allowedWords;
   }
 
 
@@ -69,6 +72,9 @@ public class BasicWordleModel implements WordleModel {
   public void guess(String userGuess) {
     if (userGuess.length() != WORD_LENGTH) {
       throw new IllegalArgumentException("word should exactly have " + WORD_LENGTH + " letters");
+    }
+    if (!allowedWords.contains(userGuess)) {
+      throw new IllegalArgumentException("No such word.");
     }
 
     Letter[] result = new Letter[WORD_LENGTH];
